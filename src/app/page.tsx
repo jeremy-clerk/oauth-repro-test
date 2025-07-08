@@ -1,16 +1,23 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-      </main>
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="glass max-w-md w-full p-8 text-center">
+        <h1 className="text-3xl font-bold text-foreground mb-2">
+          OAuth Debug App
+        </h1>
+        <p className="text-muted-foreground mb-8">
+          Test authentication flows and OAuth configurations
+        </p>
+
+        <div className="space-y-4">
+          <Link href={"/sign-in"}>
+            <button className="btn-primary w-full">Sign In</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

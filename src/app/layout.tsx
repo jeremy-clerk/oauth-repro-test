@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Oauth Repro",
-  description: "Repro repro repro",
+  title: "OAuth Test App",
+  description:
+    "A modern OAuth testing application built with Next.js and Clerk",
 };
 
 export default function RootLayout({
@@ -24,14 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en" className="h-dvh">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col items-center text-white`}
-        >
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" className="h-full">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
